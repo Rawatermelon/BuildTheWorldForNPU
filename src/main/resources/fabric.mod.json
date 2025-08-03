@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "npu",
+  "version": "${version}",
+  "name": "BuildTheWordForNPU",
+  "description": "Fabric Mod for Minecraft 1.21.8. By NPUCraft, for rebuilding NPU campus",
+  "authors": [
+    "TeachingFeelings", "SUPER2FH",
+    "AoXiang-Soar",
+    "Mario_RainFlower",
+    "Infinomat",
+    "MiLuGu", "NW-Jiang",
+    "Mountain of Mahjong", "Fulucky", "(##)%@", "vicissitude", "Barrrrrrier", "Bugu", "Entity_Fish", "Ryan Luobu", "Ssevn"],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/npu/NPUCraft.png",
+  "environment": "*",
+  "entrypoints": {
+    "fabric-datagen": [
+      "com.tf.npu.client.NPUDataGenerator"
+    ],
+    "client": [
+      "com.tf.npu.client.NPUClient"
+    ],
+    "main": [
+      "com.tf.npu.NPU"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
