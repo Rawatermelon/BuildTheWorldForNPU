@@ -48,7 +48,6 @@ public final class NpuItemGroups {
         URL url = FolderDataGetter.class.getClassLoader().getResource(filePath);
         try {
             if (url == null) throw new RuntimeException("Miss register.json");
-            LOGGER.info("Getting item groups register file from :{})", filePath);
 
             // 修改：使用类加载器和相对路径方式加载资源，避免直接使用Paths.get(url.toURI())
             registerList = new FileDataGetter<>(filePath, RegisterList.class).getData();
@@ -66,8 +65,6 @@ public final class NpuItemGroups {
     }
 
     public static void register() {
-        LOGGER.info("Registering NPU Creative Mode Tabs for " + Reference.MOD_ID);
-
         for (var group : registerList.getGroups()) {
             TemplateMap.get(group.template).register(group.items);
         }
@@ -91,12 +88,10 @@ public final class NpuItemGroups {
                             {
                                 for (Item item : itemList) {
                                     entries.add(item);
-                                    LOGGER.info("Added item {} to group {}", item.getName().getString(), id);
                                 }
                             }
                     )
                     .build();
-            LOGGER.info("Registered item group: {}", id);
             Registry.register(Registries.ITEM_GROUP, Identifier.of(Reference.MOD_ID, id), GROUP);
         }
     }

@@ -40,8 +40,6 @@ public class NpuEntities {
     public static HashMap<String, EntityType<? extends NpuVehicle>> VehicleMap = new HashMap<>();
 
     public static void register() {
-        LOGGER.info("Register mod entities for " + Reference.MOD_ID);
-
         GOLDEN_CHICKEN = registerMobEntity(GOLDEN_CHICKEN_ID, EntityType.Builder
                 .create(GoldenChicken.goldenChickenFactory(GOLDEN_CHICKEN_ID).factory(), SpawnGroup.CREATURE)
                 .dimensions(1.0f, 1.0f)
@@ -66,7 +64,6 @@ public class NpuEntities {
     public static <V extends MobEntity> EntityType<V> registerMobEntity(String id, EntityType<V> entityType) {
         EntityType<V> res = Registry.register(Registries.ENTITY_TYPE, Identifier.of(Reference.MOD_ID, id), entityType);
 
-        LOGGER.info("MobEntity {} Registered", id);
         MobEntityMap.put(id + "_spawn_egg", res);
         return res;
     }
@@ -74,7 +71,6 @@ public class NpuEntities {
     public static <V extends NpuVehicle> EntityType<V> registerVehicleEntity(String id, EntityType<V> entityType) {
         EntityType<V> res = Registry.register(Registries.ENTITY_TYPE, Identifier.of(Reference.MOD_ID, id), entityType);
 
-        LOGGER.info("VehicleEntity {} Registered", id);
         VehicleMap.put(id, res);
         return res;
     }

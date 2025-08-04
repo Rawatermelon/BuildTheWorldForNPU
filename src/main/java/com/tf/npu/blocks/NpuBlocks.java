@@ -46,7 +46,6 @@ public class NpuBlocks {
         for (RegisterList registerList : new FolderDataGetter<>(folderPath, RegisterList.class).getList()) {
             RegisterListMap.put(registerList.getId(), registerList);
         }
-        LOGGER.info("Got Block Register Lists");
     }
     private static void loadTemplate() {
         String folderPath = PathTools.linkPath(baseFolderPath, templateFolder);
@@ -54,20 +53,15 @@ public class NpuBlocks {
         for (BlockTemplate blockTemplate : new FolderDataGetter<>(folderPath, BlockTemplate.class).getList()) {
             TemplateMap.put(blockTemplate.getId(), BlockRegister.create(blockTemplate));
         }
-        LOGGER.info("Got Block Register Templates");
     }
 
     public static void register() {
-        LOGGER.info("Registering Blocks for " + Reference.MOD_ID);
-
         for (var itemGroup : RegisterListMap.keySet()){
             ItemGroupMap.put(itemGroup, new ArrayList<>());
             for (var group: RegisterListMap.get(itemGroup).getGroups()){
                 ItemGroupMap.get(itemGroup).addAll(TemplateMap.get(group.template).register(group.items));
             }
         }
-
-        LOGGER.info("Succeed to register Blocks for " + Reference.MOD_ID);
     }
 
     private record BlockRegister(BlockTemplate template) {
@@ -84,11 +78,9 @@ public class NpuBlocks {
                         BlockShapeData shapeData =
                                 new FileDataGetter<>(template.getModelPath(id), BlockShapeData.class).getData();
                         blockList.add(registerBlock(id, new NormalStructure.Factory().setShape(shapeData, template.loadMethod).build(), Common.createSettings(template)));
-                        LOGGER.info("Registered normal structure: {}", id);
                     }
                     case NORMAL_HALF_SLAB -> {
                         blockList.add(registerBlock(id, new NormalHalfSlab.Factory().setCanBeDouble(template.double_enable).build(), Common.createSettings(template)));
-                        LOGGER.info("Registered normal half slab: {}", id);
                     }
                     case DOOR_AND_WINDOW -> {
                         BlockShapeData shapeData_open =
@@ -96,7 +88,6 @@ public class NpuBlocks {
                         BlockShapeData shapeData_close =
                                 new FileDataGetter<>(template.getModelPath(id, "close"), BlockShapeData.class).getData();
                         blockList.add(registerBlock(id, new DoorAndWindow.Factory().setShape(shapeData_open, shapeData_close, template.loadMethod).build(), Common.createSettings(template)));
-                        LOGGER.info("Registered door and window: {}", id);
                     }
                     case HORIZONTAL_MULTIPLE_DIRECTIONAL_STRUCTURE -> {
                         ArrayList<BlockShapeData> shapeDatas = new ArrayList<>(0);
@@ -104,17 +95,14 @@ public class NpuBlocks {
                             shapeDatas.add(new FileDataGetter<>(template.getModelPath(id, String.valueOf(i)), BlockShapeData.class).getData());
                         }
                         blockList.add(registerBlock(id, new HorizontalMultipleDirectionalStructure.Factory().setShape(shapeDatas, template.loadMethod).build(), Common.createSettings(template)));
-                        LOGGER.info("Registered horizontal multiple directional structure: {}", id);
                     }
                     case HORIZONTAL_DIRECTIONAL_HALF_SLAB -> {
                         blockList.add(registerBlock(id, new HorizontalDirectionalHalfSlab.Factory().setCanBeDouble(template.double_enable).build(), Common.createSettings(template)));
-                        LOGGER.info("Registered horizontal directional half slab: {}", id);
                     }
                     case HORIZONTAL_DIRECTIONAL_STRUCTURE -> {
                         BlockShapeData shapeData =
                                 new FileDataGetter<>(template.getModelPath(id), BlockShapeData.class).getData();
                         blockList.add(registerBlock(id, new HorizontalDirectionalStructure.Factory().setShape(shapeData, template.loadMethod).build(), Common.createSettings(template)));
-                        LOGGER.info("Registered horizontal directional structure: {}", id);
                     }
                     default -> throw new IllegalStateException("Unexpected value: " + template.StructureType);
                 }

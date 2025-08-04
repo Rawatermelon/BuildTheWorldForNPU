@@ -47,7 +47,6 @@ public final class NpuItems {
         for (RegisterList registerList : new FolderDataGetter<>(folderPath, RegisterList.class).getList()) {
             RegisterListMap.put(registerList.getId(), registerList);
         }
-        LOGGER.info("Got Item Register Lists");
     }
 
     private static void loadTemplate() {
@@ -56,12 +55,9 @@ public final class NpuItems {
         for (ItemTemplate itemTemplate : new FolderDataGetter<>(folderPath, ItemTemplate.class).getList()) {
             TemplateMap.put(itemTemplate.getId(), ItemRegister.create(itemTemplate));
         }
-        LOGGER.info("Got Item Register Templates");
     }
 
     public static void register() {
-        LOGGER.info("Register mod items for " + Reference.MOD_ID);
-
         for (var itemGroup : RegisterListMap.keySet()) {
             ItemGroupMap.put(itemGroup, new ArrayList<>());
             for (var group : RegisterListMap.get(itemGroup).getGroups()) {
@@ -72,8 +68,6 @@ public final class NpuItems {
             ItemGroupMap.computeIfAbsent(itemGroup, k -> new ArrayList<>());
             NpuBlocks.ItemGroupMap.get(itemGroup).forEach(block -> ItemGroupMap.get(itemGroup).add(Items.register(block)));
         }
-
-        LOGGER.info("Succeed to register Items for " + Reference.MOD_ID);
     }
 
     public static List<Item> getItemList(String itemGroup) {
@@ -92,14 +86,11 @@ public final class NpuItems {
                 if (isSpawnEgg) {
                     itemList.add(registerItem(id, (settings) ->
                             new SpawnEggItem(NpuEntities.MobEntityMap.get(id), settings), new SpawnEggItem.Settings()));
-                    LOGGER.info("Registered spawn egg item: {}", id);
                 } else if (isVehicle) {
                     itemList.add(registerItem(id, (settings) ->
                             new VehicleItem(NpuEntities.VehicleMap.get(id), settings), new VehicleItem.Settings()));
-                    LOGGER.info("Registered vehicle item: {}", id);
                 } else {
                     itemList.add(registerItem(id, Item::new, new Item.Settings()));
-                    LOGGER.info("Registered normal item: {}", id);
                 }
             });
             return itemList;

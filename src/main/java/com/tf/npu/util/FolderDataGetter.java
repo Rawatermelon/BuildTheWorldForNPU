@@ -35,7 +35,6 @@ public class FolderDataGetter<T> {
     }
 
     private void initialize() {
-        LOGGER.info("Preparing to get data from folder: {}", dataPath);
         try {
             // 获取类加载器
             ClassLoader classLoader = FolderDataGetter.class.getClassLoader();

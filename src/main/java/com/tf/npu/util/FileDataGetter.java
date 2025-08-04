@@ -27,18 +27,15 @@ public class FileDataGetter<T> {
     }
 
     private void initialize() {
-        LOGGER.info("Preparing to get data from file: {}", dataPath);
         try {
             InputStream inputStream = FileDataGetter.class.getClassLoader().getResourceAsStream(dataPath);
             if (inputStream != null) {
                 BufferedReader fileReader = new BufferedReader(new InputStreamReader(inputStream));
                 boolean readerReady = fileReader.ready();
-                LOGGER.info("Getting data from file: {} (Reader state:{})", dataPath, readerReady ? "Ready" : "Failed");
                 if (readerReady){
                     JsonReader reader = new JsonReader(fileReader);
                     data = gson.fromJson(reader, tClass);
                     reader.close();
-                    LOGGER.info("Succeed to get data from file: {}", dataPath);
                 }
                 else {
                     LOGGER.info("Failed to get data from file: {}, Reason: File not exist", dataPath);
