@@ -16,7 +16,7 @@ public class BlockTemplate {
     public boolean noParticlesOnBreak;
 
     public boolean customModel = false;
-    public boolean cutout = false;
+    public String render = "default";
 
     public String getId(){
         return id;

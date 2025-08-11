@@ -21,5 +21,6 @@ public class NPUClient implements ClientModInitializer {
                         bike.getTranslationKey().substring(bike.getTranslationKey().lastIndexOf('.') + 1)))
         );
         NpuBlocks.CutoutBlocks.forEach(block -> BlockRenderLayerMap.putBlock(block, BlockRenderLayer.CUTOUT));
+        NpuBlocks.TransparentBlocks.forEach(block -> BlockRenderLayerMap.putBlock(block, BlockRenderLayer.TRANSLUCENT));
     }
 }

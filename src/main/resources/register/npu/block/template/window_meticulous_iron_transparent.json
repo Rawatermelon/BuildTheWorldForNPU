@@ -1,11 +1,11 @@
 {
-  "StructureType": "HORIZONTAL_DIRECTIONAL_STRUCTURE",
+  "StructureType": "DOOR_AND_WINDOW",
   "loadMethod": "METICULOUS",
   "Material": "IRON",
   "noOcclusion": true,
   "noCollision": false,
   "noLootTable": false,
   "noParticlesOnBreak": false,
-  "render": "cutout",
-  "id": "horizontal_meticulous_iron_cutout"
+  "render": "transparent",
+  "id": "window_meticulous_iron_transparent"
 }

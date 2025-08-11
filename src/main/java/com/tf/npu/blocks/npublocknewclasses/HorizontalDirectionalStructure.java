@@ -4,6 +4,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.tf.npu.blocks.NpuBlocks;
+import com.tf.npu.blocks.npublocknewclasses.common.DirectionCheck;
 import com.tf.npu.blocks.npublocknewclasses.common.LoadShape;
 import com.tf.npu.util.register.data.template.BlockShapeData;
 import net.minecraft.block.*;
@@ -83,7 +84,8 @@ public class HorizontalDirectionalStructure extends HorizontalFacingBlock implem
 
     @Override
     public @Nullable BlockState getPlacementState(ItemPlacementContext ctx) {
-        return getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing().getOpposite());
+        return getDefaultState()
+                .with(FACING, ctx.getHorizontalPlayerFacing().getOpposite());
     }
 
     // 设置形状

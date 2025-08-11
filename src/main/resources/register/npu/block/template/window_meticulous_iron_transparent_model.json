@@ -7,5 +7,6 @@
   "noLootTable": false,
   "noParticlesOnBreak": false,
   "customModel": true,
-  "id": "window_meticulous_iron_model"
+  "render": "transparent",
+  "id": "window_meticulous_iron_transparent_model"
 }

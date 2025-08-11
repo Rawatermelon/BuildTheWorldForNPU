@@ -4,6 +4,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.tf.npu.blocks.NpuBlocks;
+import com.tf.npu.blocks.npublocknewclasses.common.DirectionCheck;
 import com.tf.npu.blocks.npublocknewclasses.common.LoadShape;
 import com.tf.npu.util.register.data.template.BlockShapeData;
 import net.minecraft.block.*;
@@ -96,7 +97,9 @@ public class DoorAndWindow extends HorizontalFacingBlock implements LoadShape {
 
     @Override
     public @Nullable BlockState getPlacementState(ItemPlacementContext ctx) {
-        return getDefaultState().with(OPEN, false).with(FACING, ctx.getPlayerLookDirection().getOpposite());
+        return getDefaultState()
+                .with(OPEN, false)
+                .with(FACING, ctx.getHorizontalPlayerFacing().getOpposite());
     }
 
     // 设置形状

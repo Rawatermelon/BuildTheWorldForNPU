@@ -6,6 +6,6 @@
   "noCollision": false,
   "noLootTable": false,
   "noParticlesOnBreak": false,
-  "cutout": true,
+  "render": "cutout",
   "id": "horizontal_rough_iron_cutout"
 }

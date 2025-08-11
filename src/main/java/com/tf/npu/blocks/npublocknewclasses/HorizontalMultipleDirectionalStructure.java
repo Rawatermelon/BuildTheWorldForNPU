@@ -68,7 +68,7 @@ public class HorizontalMultipleDirectionalStructure extends Block implements Loa
     // 放置时状态
     @Override
     public @Nullable BlockState getPlacementState(ItemPlacementContext ctx) {
-        return this.getDefaultState().with(ANGEL, switch (ctx.getPlayerLookDirection().getOpposite()) {
+        return this.getDefaultState().with(ANGEL, switch (ctx.getHorizontalPlayerFacing().getOpposite()) {
             case WEST, EAST -> 6;
             default -> 0;
         });

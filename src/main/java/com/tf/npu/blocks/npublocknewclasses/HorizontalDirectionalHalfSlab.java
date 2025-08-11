@@ -55,7 +55,9 @@ public class HorizontalDirectionalHalfSlab extends SlabBlock {
             else return blockState.with(TYPE, getOppositeSlabType(blockState.get(TYPE)));
         } else {
             FluidState fluidState = ctx.getWorld().getFluidState(blockPos);
-            BlockState blockState2 = this.getDefaultState().with(TYPE, SlabType.BOTTOM).with(WATERLOGGED, fluidState.getFluid() == Fluids.WATER);
+            BlockState blockState2 = this.getDefaultState().with(TYPE, SlabType.BOTTOM)
+                    .with(WATERLOGGED, fluidState.getFluid() == Fluids.WATER)
+                    .with(FACING, ctx.getPlayer() != null ? ctx.getPlayer().getHorizontalFacing().getOpposite() : Direction.NORTH);;
             Direction direction = ctx.getSide();
             return direction != Direction.DOWN && (direction == Direction.UP || !(ctx.getHitPos().y - (double)blockPos.getY() > (double)0.5F)) ? blockState2 : blockState2
                     .with(TYPE, SlabType.TOP)

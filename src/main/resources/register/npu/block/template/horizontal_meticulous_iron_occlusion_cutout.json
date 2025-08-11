@@ -6,6 +6,6 @@
   "noCollision": false,
   "noLootTable": false,
   "noParticlesOnBreak": false,
-  "cutout": true,
+  "render": "cutout",
   "id": "horizontal_meticulous_iron_occlusion_cutout"
 }

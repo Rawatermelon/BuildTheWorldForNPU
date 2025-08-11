@@ -19,7 +19,7 @@ public interface LoadShape {
             case METICULOUS:
                 for (VoxelShape voxelShape : shapeList) {
                     if (shape.isEmpty()){
-                        shape = voxelShape;
+                        shape = getShapeByDirection(voxelShape, direction);
                     }
                     else {
                         shape = VoxelShapes.combine(shape, getShapeByDirection(voxelShape, direction), BooleanBiFunction.OR);

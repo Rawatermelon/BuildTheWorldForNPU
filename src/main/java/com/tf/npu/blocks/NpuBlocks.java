@@ -22,6 +22,7 @@ import org.slf4j.Logger;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.Function;
 
 public class NpuBlocks {
@@ -35,6 +36,7 @@ public class NpuBlocks {
     private static final HashMap<String, BlockRegister> TemplateMap = new HashMap<>();   //  模版映射
     public static final HashMap<String, List<Block>> ItemGroupMap = new HashMap<>();    // Id-方块映射
     public static final List<Block> CutoutBlocks = new ArrayList<>();   // 透明方块
+    public static final List<Block> TransparentBlocks = new ArrayList<>();   // 半透明方块
 
     static {
         loadRegisterList();
@@ -107,7 +109,8 @@ public class NpuBlocks {
                     default -> throw new IllegalStateException("Unexpected value: " + template.StructureType);
                 }
             });
-            if (template.cutout) CutoutBlocks.addAll(blockList);
+            if (Objects.equals(template.render, "cutout")) CutoutBlocks.addAll(blockList);
+            if (Objects.equals(template.render, "transparent")) TransparentBlocks.addAll(blockList);
             return blockList;
         }
 

@@ -3,6 +3,7 @@ package com.tf.npu;
 import com.tf.npu.util.Reference;
 import com.tf.npu.util.register.RegisterObjects;
 import net.fabricmc.api.ModInitializer;
+import net.minecraft.item.Items;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
