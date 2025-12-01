@@ -17,13 +17,13 @@
   "environment": "*",
   "entrypoints": {
     "fabric-datagen": [
-      "com.tf.npu.client.NPUDataGenerator"
+      "com.infinomat.minecraft.mod.npu.client.NPUDataGenerator"
     ],
     "client": [
-      "com.tf.npu.client.NPUClient"
+      "com.infinomat.minecraft.mod.npu.client.NPUClient"
     ],
     "main": [
-      "com.tf.npu.NPU"
+      "com.infinomat.minecraft.mod.npu.NPU"
     ]
   },
   "depends": {
