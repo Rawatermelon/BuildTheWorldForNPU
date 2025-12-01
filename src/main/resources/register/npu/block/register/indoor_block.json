@@ -127,7 +127,9 @@
         "yunf_framed_sliding_door_backside",
         "yunf_framed_sliding_door_backside_up",
         "yunf_toilet_door_right",
-        "yunf_toilet_door_right_up"
+        "yunf_toilet_door_right_up",
+        "sink_left",
+        "sink_right"
       ]
     },
     {
@@ -166,9 +168,7 @@
         "shelf_gongxun1",
         "shelf_gongxun2",
         "single_compartment_sink",
-        "sink_left",
         "sink_mid",
-        "sink_right",
         "small_electric_brake",
         "spicy_pot_freezer",
         "stove",
@@ -179,10 +179,6 @@
         "supermarket_shelves_wall",
         "wall_mounted_tv",
         "washing_machine",
-        "white_pipe_3_interface",
-        "white_pipe_corner",
-        "white_pipe_straight",
-        "white_pipe_straight_with_bracket",
         "workshop_cabinet_sink1",
         "workshop_cabinet_sink2"
       ]
