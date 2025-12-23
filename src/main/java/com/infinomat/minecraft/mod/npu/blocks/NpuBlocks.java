@@ -35,7 +35,7 @@ public class NpuBlocks {
 
     public static final HashMap<String, RegisterList> RegisterListMap = new HashMap<>();// 待注册方块列表
     private static final HashMap<String, BlockRegister> TemplateMap = new HashMap<>();   //  模版映射
-    public static final HashMap<String, List<Block>> ItemGroupMap = new HashMap<>();    // Id-方块映射
+    public static final HashMap<String, List<Block>> ItemGroupMap = new HashMap<>();    // 物品栏-方块映射
     public static final List<Block> CutoutBlocks = new ArrayList<>();   // 透明方块
     public static final List<Block> TransparentBlocks = new ArrayList<>();   // 半透明方块
 
